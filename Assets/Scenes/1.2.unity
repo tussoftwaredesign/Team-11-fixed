@@ -246,12 +246,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowRuntimeFragmentation: 1
-  extraPoints: 5
+  extraPoints: 10
   subshatterSteps: 0
   fragmentLayer: Default
   sortingLayerName: Default
   orderInLayer: 0
-  shatterType: 0
+  shatterType: 1
   fragments: []
 --- !u!50 &85923182
 Rigidbody2D:
@@ -279,7 +279,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!60 &85923183
 PolygonCollider2D:
   m_ObjectHideFlags: 0
