@@ -368,7 +368,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tileselab1_0: 7759947962908888663
+      tileselab1_1: -5502546431894013400
+      tileselab1_10: 8804618604032069247
+      tileselab1_2: -962694616291692314
+      tileselab1_3: 7629646338425448302
+      tileselab1_4: 2454161471305367742
+      tileselab1_5: -1940366503118693045
+      tileselab1_6: 7005653594308365410
+      tileselab1_7: 7717437138829903655
+      tileselab1_8: 7618568800419713684
+      tileselab1_9: 5165075103685272651
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
