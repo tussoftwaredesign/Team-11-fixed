@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviour
     void GetComponentsFromCurrentPlayer()
     {
         rb = currentPlayer.GetComponent<Rigidbody2D>();
-        animator = currentPlayer.GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>();
         spriteRenderer = currentPlayer.GetComponent<SpriteRenderer>();
         groundCheck = currentPlayer.GetComponent<GroundCheck>();
     }
@@ -66,12 +66,8 @@ public class PlayerManager : MonoBehaviour
         // Is the Player Moving?
         if (movementDirection != Vector2.zero)
         {
-            // Is the Walking animation set the False?
-            if (animator.GetBool("walking") == false)
-            {
-                // Enable the Walking Animation
-                animator.SetBool("walking", true);
-            }
+            animator.SetBool("walking", true);
+
 
             if (movementDirection.x < 0) { spriteRenderer.flipX = true; }
             else {

@@ -102194,7 +102194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7885217800069980921, guid: 666e7b60bac03524192b22a966d4f183, type: 3}
       propertyPath: m_Name
-      value: PlayerNormal
+      value: PlayerSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 8375271387144896871, guid: 666e7b60bac03524192b22a966d4f183, type: 3}
       propertyPath: m_SortingOrder
