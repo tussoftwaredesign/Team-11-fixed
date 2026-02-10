@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
 
     bool deathTriggered = false;
     public int destroyTimer = 1;
+    public GameObject explosionEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +38,7 @@ public class EnemyManager : MonoBehaviour
         
         if (other.gameObject.CompareTag("Big Guy"))
        {
-            
+            Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
             Debug.Log("Squished Enemy!");
         }

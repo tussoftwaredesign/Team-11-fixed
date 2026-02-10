@@ -1,22 +1,13 @@
 fileFormatVersion: 2
-guid: 97dd720a8a9b2b447b3ab7d76de40182
+guid: bfa795b88ca8668409b4523e1b4aefc9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6525720320459867213
-    second: bigfall_0
+      213: 5072816369035396644
+    second: mediumidle_0
   - first:
-      213: 647901870174414215
-    second: bigfall_1
-  - first:
-      213: 7146886662321102404
-    second: bigfall_2
-  - first:
-      213: -4271388724909083870
-    second: bigfall_3
-  - first:
-      213: 3925465988615526213
-    second: bigfall_4
+      213: 6833213631426407368
+    second: mediumidle_1
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -110,106 +101,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bigfall_0
+      name: mediumidle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
+        width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d440f848e04009a50800000000000000
-      internalID: 6525720320459867213
+      spriteID: 42644275c93466640800000000000000
+      internalID: 5072816369035396644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bigfall_1
+      name: mediumidle_1
       rect:
         serializedVersion: 2
-        x: 48
+        x: 32
         y: 0
-        width: 48
+        width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 785ae05715fcdf800800000000000000
-      internalID: 647901870174414215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigfall_2
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 44e50a5bd87de2360800000000000000
-      internalID: 7146886662321102404
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigfall_3
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2237f22e59af8b4c0800000000000000
-      internalID: -4271388724909083870
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bigfall_4
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 48
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5475e45c48e0a7630800000000000000
-      internalID: 3925465988615526213
+      spriteID: 8cb2787089374de50800000000000000
+      internalID: 6833213631426407368
       vertices: []
       indices: 
       edges: []
@@ -217,7 +145,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0904dc2ae6c32d34592c2771b2fba2a0
+    spriteID: 5878186d57444f94ab232cc6ce4dc2fc
     internalID: 0
     vertices: []
     indices: 
@@ -225,11 +153,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bigfall_0: 6525720320459867213
-      bigfall_1: 647901870174414215
-      bigfall_2: 7146886662321102404
-      bigfall_3: -4271388724909083870
-      bigfall_4: 3925465988615526213
+      mediumidle_0: 5072816369035396644
+      mediumidle_1: 6833213631426407368
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

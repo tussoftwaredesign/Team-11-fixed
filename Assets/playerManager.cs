@@ -77,7 +77,7 @@ public class PlayerManager : MonoBehaviour
         // Is the Player Moving?
         if (movementDirection != Vector2.zero)
         {
-            animator.SetBool("walking", true);
+            animator.SetBool("Big_Walk", true);
 
 
             if (movementDirection.x < 0) { spriteRenderer.flipX = true; }
@@ -88,16 +88,29 @@ public class PlayerManager : MonoBehaviour
         // If the player is not moving - they're standing still
         else {
             // Disable the Walking Animation
-            animator.SetBool("walking", false);
+            animator.SetBool("Big_Walk", false);
         }
     }
         void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Enemy")
-       {
+        {
             
             playerHealth -= 1;
             Debug.Log("PlayerHealth" + playerHealth);
+        }
+        if (other.gameObject.tag == "Collectable") {
+
+
+            GameObject collectable = other.gameObject;
+
+            int collectableValue = collectable.GetComponent<itemValue>().pickUpValue;
+
+            playerHealth += collectableValue;
+            
+            Destroy(collectable);
+
+            Debug.Log("Health: " + playerHealth);
         }
     }
     void UpdateFormProperties()
@@ -164,7 +177,6 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Player has Jumped!");
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
-            animator.SetTrigger("Jump");
         }
     }
         private IEnumerator ReloadScene()
@@ -172,5 +184,12 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("Reloading scene");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Collectable") {
+            Debug.Log("Collision ended with: " + collision.collider.name);
+        }
     }
 }
