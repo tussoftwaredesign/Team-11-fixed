@@ -85,10 +85,10 @@ public class EnemyAgroZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Player Radius Detection
-        if (collision.name.Equals(target.name))
+        // Check if collision object has one of the target tags
+        if (collision.CompareTag("Big Guy") || collision.CompareTag("Mid Guy") || collision.CompareTag("Small Guy"))
         {
-
+            target = collision.gameObject;
             // Debug.Log("Enter: " + collision.name);
             targetDetected = true;
 
@@ -98,13 +98,12 @@ public class EnemyAgroZone : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // Player Radius Detection
-        if (collision.name.Equals(target.name))
+        // Check if exiting object was the current target
+        if (target != null && collision.gameObject == target)
         {
-
             //Debug.Log("Exit: " + collision.name);
             targetDetected = false;
-
+            target = null;
         }
     }
 

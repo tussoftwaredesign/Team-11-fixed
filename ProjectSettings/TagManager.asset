@@ -6,6 +6,17 @@ TagManager:
   tags:
   - Collectable
   - Mobs
+  - Big Guy
+  - ground
+  - Obstacle
+  - BombPickup
+  - Enemy
+  - ExplosionFX
+  - Bullet
+  - HealthBar
+  - Mid Guy
+  - Small Guy
+  - BigBossBox
   layers:
   - Default
   - TransparentFX

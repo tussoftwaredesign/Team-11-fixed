@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class PlayerManager : MonoBehaviour
     public Vector2 movementDirection;
     public int movementSpeed = 5;
     public int jumpImpulse = 5;
+    public float timer = 2.0f;
+    public int playerHealth = 12;
+    private bool isDead = false;
     public PlayerState currentState = PlayerState.Form1;
 
     // Start is called before the first frame update
@@ -46,6 +50,13 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerHealth <= 0 && !isDead)
+        {
+           Debug.Log("Death triggered");
+            isDead = true;
+            movementDirection = Vector2.zero;
+            StartCoroutine(ReloadScene());
+        }
         // Handle form switching
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -84,7 +95,15 @@ public class PlayerManager : MonoBehaviour
             animator.SetBool("walking", false);
         }
     }
-
+        void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+       {
+            
+            playerHealth -= 1;
+            Debug.Log("PlayerHealth" + playerHealth);
+        }
+    }
     void UpdateFormProperties()
     {
         // Save current position and velocity
@@ -151,5 +170,11 @@ public class PlayerManager : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
             animator.SetTrigger("Jump");
         }
+    }
+        private IEnumerator ReloadScene()
+    {
+        Debug.Log("Reloading scene");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
