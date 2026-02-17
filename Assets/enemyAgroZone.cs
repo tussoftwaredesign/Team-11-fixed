@@ -36,10 +36,10 @@ public class EnemyAgroZone : MonoBehaviour
 
             if (calculatedDirection.x < 0)
             {
-                spriteRenderer.flipX = false;
+                spriteRenderer.flipX = true;
             }
             else { 
-                spriteRenderer.flipX = true;
+                spriteRenderer.flipX = false;
             }
         }
         else {

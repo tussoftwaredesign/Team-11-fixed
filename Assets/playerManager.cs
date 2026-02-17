@@ -129,17 +129,17 @@ public class PlayerManager : MonoBehaviour
             case PlayerState.Form1:
                 newPlayerPrefab = form2Prefab; // Small
                 movementSpeed = 10;
-                jumpImpulse = 8;
+                jumpImpulse = 16;
                 break;
             case PlayerState.Form2:
                 newPlayerPrefab = form1Prefab; // Normal
-                movementSpeed = 5;
-                jumpImpulse = 5;
+                movementSpeed = 6;
+                jumpImpulse = 10;
                 break;
             case PlayerState.Form3:
                 newPlayerPrefab = form3Prefab; // Big
                 movementSpeed = 2;
-                jumpImpulse = 1;
+                jumpImpulse = 0;
                 break;
         }
 

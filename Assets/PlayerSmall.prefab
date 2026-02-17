@@ -326,7 +326,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.5
+  m_GravityScale: 1.7
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -356,6 +356,8 @@ MonoBehaviour:
   movementDirection: {x: 0, y: 0}
   movementSpeed: 5
   jumpImpulse: 5
+  timer: 2
+  playerHealth: 12
   currentState: 0
 --- !u!70 &6595111166127775488
 CapsuleCollider2D:
