@@ -17,6 +17,7 @@ TagManager:
   - Mid Guy
   - Small Guy
   - BigBossBox
+  - Collision
   layers:
   - Default
   - TransparentFX
