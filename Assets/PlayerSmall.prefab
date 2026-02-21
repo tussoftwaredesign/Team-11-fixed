@@ -436,7 +436,7 @@ MonoBehaviour:
   movementSpeed: 5
   jumpImpulse: 5
   timer: 2
-  playerHealth: 12
+  playerHealth: 1
   currentState: 0
 --- !u!70 &6595111166127775488
 CapsuleCollider2D:
@@ -485,7 +485,7 @@ Animator:
   m_GameObject: {fileID: 6002069105471894851}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cf36d38030ca72f4bb0e5ba75b37589b, type: 2}
+  m_Controller: {fileID: 9100000, guid: f1d385e7701046d44a6e049c897da8e1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

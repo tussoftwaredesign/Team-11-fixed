@@ -31,17 +31,28 @@ public class EnemyBulletScript : MonoBehaviour
         }
     }
 
-    void onTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        Debug.Log("Collision detected with: " + other.gameObject.name + " | Tag: " + other.gameObject.tag);
+        
+        if (other.gameObject.CompareTag("Big Guy"))
+        {
+            other.gameObject.GetComponent<PlayerManager>().playerHealth -= 1;
+            Destroy(gameObject);
+        }
+        if (other.gameObject.CompareTag("Mid Guy"))
+        {
+            other.gameObject.GetComponent<PlayerManager>().playerHealth -= 1;
+            Destroy(gameObject);
+        }
+        if (other.gameObject.CompareTag("Small Guy"))
+        {
+            other.gameObject.GetComponent<PlayerManager>().playerHealth -= 1;
+            Destroy(gameObject);
+        }
+        if (other.gameObject.CompareTag("Collision"))
         {
             Destroy(gameObject);
         }
-
-        if (other.gameObject.CompareTag("Collision"))
-        {
-            Destroy(gameObject); 
-        }
-        
     }
 }

@@ -18,6 +18,7 @@ TagManager:
   - Small Guy
   - BigBossBox
   - Collision
+  - Projectile
   layers:
   - Default
   - TransparentFX

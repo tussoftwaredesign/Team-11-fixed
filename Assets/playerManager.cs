@@ -50,6 +50,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator = gameObject.GetComponent<Animator>();
         if (playerHealth <= 0 && !isDead)
         {
            Debug.Log("Death triggered");
@@ -75,9 +76,10 @@ public class PlayerManager : MonoBehaviour
         }
 
         // Is the Player Moving?
+
         if (movementDirection != Vector2.zero)
         {
-            animator.SetBool("Big_Walk", true);
+            animator.SetBool("Walking", true);
 
 
             if (movementDirection.x < 0) { spriteRenderer.flipX = true; }
@@ -88,7 +90,7 @@ public class PlayerManager : MonoBehaviour
         // If the player is not moving - they're standing still
         else {
             // Disable the Walking Animation
-            animator.SetBool("Big_Walk", false);
+            animator.SetBool("Walking", false);
         }
     }
         void OnCollisionEnter2D(Collision2D other)
@@ -96,6 +98,11 @@ public class PlayerManager : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             
+            playerHealth -= 1;
+            Debug.Log("PlayerHealth" + playerHealth);
+        }
+        if (other.gameObject.tag == "Projectile")
+        {    
             playerHealth -= 1;
             Debug.Log("PlayerHealth" + playerHealth);
         }
@@ -129,16 +136,19 @@ public class PlayerManager : MonoBehaviour
             case PlayerState.Form1:
                 newPlayerPrefab = form2Prefab; // Small
                 movementSpeed = 10;
+                playerHealth = 1;
                 jumpImpulse = 16;
                 break;
             case PlayerState.Form2:
                 newPlayerPrefab = form1Prefab; // Normal
                 movementSpeed = 6;
+                playerHealth = 5;
                 jumpImpulse = 10;
                 break;
             case PlayerState.Form3:
                 newPlayerPrefab = form3Prefab; // Big
-                movementSpeed = 2;
+                movementSpeed = 3;
+                playerHealth = 10;
                 jumpImpulse = 0;
                 break;
         }
@@ -168,7 +178,7 @@ public class PlayerManager : MonoBehaviour
 
     void OnFire() {
         // Trigger the Attack Animation
-        animator.SetTrigger("attack");
+        animator.SetTrigger("Attack");
     }
 
     void OnJump() {

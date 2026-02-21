@@ -27,6 +27,7 @@ public class GroundCheck : MonoBehaviour
         // If we collide with the ground
         if (collisions > 0)
         {
+            
             isGrounded = true;
             
         }
