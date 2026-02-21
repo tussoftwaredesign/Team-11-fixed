@@ -21,7 +21,7 @@ public class PlayerAttackRadius : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision){
 
-        if (collision.gameObject.tag == "Mobs") {
+        if (collision.gameObject.tag == "Enemy") {
 
             ItemHealth itemHealth = collision.gameObject.GetComponent<ItemHealth>();
 

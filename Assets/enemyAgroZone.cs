@@ -33,6 +33,7 @@ public class EnemyAgroZone : MonoBehaviour
     {
         if (targetDetected)
         {
+            enemyAnimator.SetBool("Walking", true);
 
             if (calculatedDirection.x < 0)
             {
@@ -43,7 +44,7 @@ public class EnemyAgroZone : MonoBehaviour
             }
         }
         else {
-
+            enemyAnimator.SetBool("Walking", false);
         } 
 
 
@@ -59,8 +60,7 @@ public class EnemyAgroZone : MonoBehaviour
             // Calculate the Distance from the player
             calculatedDistance = target.transform.position - enemy.transform.position;
 
-            // Check the Distance is greater than 2
-            if (Mathf.Abs(calculatedDistance.x) >= 2)
+            if (Mathf.Abs(calculatedDistance.x) >= 2.5)
             {
                 //Debug.Log(calculatedDirection + " --- " + calculatedDistance + " --- " + Mathf.Abs(calculatedDistance.x));
                 
