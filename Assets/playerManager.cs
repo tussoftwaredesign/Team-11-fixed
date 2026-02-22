@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour
     public int playerHealth = 12;
     private bool isDead = false;
     public PlayerState currentState = PlayerState.Form1;
+    public GameObject swapEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -58,22 +59,6 @@ public class PlayerManager : MonoBehaviour
             movementDirection = Vector2.zero;
             StartCoroutine(ReloadScene());
         }
-        // Handle form switching
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            currentState = PlayerState.Form1;
-            UpdateFormProperties();
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            currentState = PlayerState.Form2;
-            UpdateFormProperties();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            currentState = PlayerState.Form3;
-            UpdateFormProperties();
-        }
 
         // Is the Player Moving?
 
@@ -92,6 +77,16 @@ public class PlayerManager : MonoBehaviour
             // Disable the Walking Animation
             animator.SetBool("Walking", false);
         }
+
+        if (groundCheck.isGrounded)
+        {
+            animator.SetBool("Falling", false);
+        }
+        else
+        {
+            animator.SetBool("Falling", true);
+        }
+
     }
         void OnCollisionEnter2D(Collision2D other)
     {
@@ -179,6 +174,22 @@ public class PlayerManager : MonoBehaviour
     void OnFire() {
         // Trigger the Attack Animation
         animator.SetTrigger("Attack");
+    }
+
+    void OnSmall() {
+        currentState = PlayerState.Form1;
+        UpdateFormProperties();
+        animator.SetTrigger("Swap");
+    }
+    void OnMedium() {
+        currentState = PlayerState.Form2;
+        UpdateFormProperties();
+        animator.SetTrigger("Swap");
+    }
+    void OnBig() {
+        currentState = PlayerState.Form3;
+        UpdateFormProperties();
+        animator.SetTrigger("Swap");
     }
 
     void OnJump() {

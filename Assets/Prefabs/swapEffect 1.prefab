@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5918759594306641720}
   - component: {fileID: 2819904627167630980}
   - component: {fileID: 3306129074796891323}
-  - component: {fileID: -4759581432068467432}
+  - component: {fileID: 7971011935942254616}
   m_Layer: 31
-  m_Name: explosionEffect
+  m_Name: swapEffect 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +117,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -170,7 +170,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 7
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -224,7 +224,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.28974405, g: 0.6981132, b: 0.2799039, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -981,7 +981,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 50
+        scalar: 25
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -4887,7 +4887,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &-4759581432068467432
+--- !u!114 &7971011935942254616
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4896,6 +4896,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7757074198341069770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da4c156ba1cb214381e2a45fd97d224, type: 3}
+  m_Script: {fileID: 11500000, guid: 65ff50b84838a9a4caf4ce30e2af3b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

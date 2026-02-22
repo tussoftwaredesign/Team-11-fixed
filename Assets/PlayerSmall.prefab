@@ -355,6 +355,7 @@ MonoBehaviour:
   timer: 2
   playerHealth: 1
   currentState: 0
+  swapEffect: {fileID: 7757074198341069770, guid: 3acc9dc33010b8544a2eb0462e49e5c9, type: 3}
 --- !u!70 &6595111166127775488
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -33,8 +33,10 @@ public class EnemyAgroZone : MonoBehaviour
     {
         if (targetDetected)
         {
-            enemyAnimator.SetBool("Walking", true);
-
+            if (Mathf.Abs(calculatedDistance.x) >= 2.5)
+            {
+                enemyAnimator.SetBool("Walking", true);
+            }
             if (calculatedDirection.x < 0)
             {
                 spriteRenderer.flipX = true;

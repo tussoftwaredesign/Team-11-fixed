@@ -68,7 +68,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1
+  m_Radius: 1.4
 --- !u!114 &6198499020973447976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a9db961bcae5748a9e7c2a0cde3fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAmount: 50
+  hitAmount: 34
 --- !u!1 &2548048804440830430
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +438,7 @@ MonoBehaviour:
   timer: 2
   playerHealth: 5
   currentState: 1
+  swapEffect: {fileID: 7757074198341069770, guid: 3acc9dc33010b8544a2eb0462e49e5c9, type: 3}
 --- !u!70 &8111634626582912684
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
