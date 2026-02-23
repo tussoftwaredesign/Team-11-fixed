@@ -436,9 +436,11 @@ MonoBehaviour:
   movementSpeed: 5
   jumpImpulse: 5
   timer: 2
-  playerHealth: 5
+  playerHealth: 10
+  playerMaxHealth: 0
   currentState: 1
   swapEffect: {fileID: 7757074198341069770, guid: 3acc9dc33010b8544a2eb0462e49e5c9, type: 3}
+  healthBar: {fileID: 3566192453191957855, guid: e52ef426febab6343ba05d70ea1257ef, type: 3}
 --- !u!70 &8111634626582912684
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

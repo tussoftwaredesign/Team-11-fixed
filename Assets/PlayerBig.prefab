@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 4054620800040858103}
   - component: {fileID: 8832243903303103906}
   - component: {fileID: 8567910581948274085}
-  - component: {fileID: 8779066573508929717}
   m_Layer: 0
   m_Name: PlayerBig
   m_TagString: Big Guy
@@ -171,6 +170,7 @@ MonoBehaviour:
   jumpImpulse: 5
   timer: 2
   playerHealth: 10
+  playerMaxHealth: 0
   currentState: 2
   swapEffect: {fileID: 7757074198341069770, guid: 3acc9dc33010b8544a2eb0462e49e5c9, type: 3}
 --- !u!70 &120409492548923713
@@ -273,19 +273,6 @@ MonoBehaviour:
     maxNormalAngle: 0
   groundDistance: 0.05
   isGrounded: 0
---- !u!114 &8779066573508929717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 825528817960305602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a9db961bcae5748a9e7c2a0cde3fa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitAmount: 50
 --- !u!1 &3530917967566591959
 GameObject:
   m_ObjectHideFlags: 0

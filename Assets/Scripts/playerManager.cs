@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -22,14 +23,19 @@ public class PlayerManager : MonoBehaviour
     public int movementSpeed = 5;
     public int jumpImpulse = 5;
     public float timer = 2.0f;
-    public int playerHealth = 12;
+    public float playerHealth = 12;
+    public float playerMaxHealth;
     private bool isDead = false;
     public PlayerState currentState = PlayerState.Form1;
     public GameObject swapEffect;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        playerHealth = 10;
+        playerMaxHealth = playerHealth;
+
         if (form2Prefab == null)
         {
             Debug.LogError("form2Prefab not assigned in Inspector!");
@@ -51,6 +57,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         animator = gameObject.GetComponent<Animator>();
         if (playerHealth <= 0 && !isDead)
         {
@@ -92,14 +99,15 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            
             playerHealth -= 1;
             Debug.Log("PlayerHealth" + playerHealth);
+            animator.SetTrigger("Swap");
         }
         if (other.gameObject.tag == "Projectile")
         {    
             playerHealth -= 1;
             Debug.Log("PlayerHealth" + playerHealth);
+            animator.SetTrigger("Swap");
         }
         if (other.gameObject.tag == "Collectable") {
 
@@ -131,20 +139,23 @@ public class PlayerManager : MonoBehaviour
             case PlayerState.Form1:
                 newPlayerPrefab = form2Prefab; // Small
                 movementSpeed = 10;
-                playerHealth = 1;
+                
                 jumpImpulse = 16;
+                animator.SetTrigger("Swap");
                 break;
             case PlayerState.Form2:
                 newPlayerPrefab = form1Prefab; // Normal
                 movementSpeed = 6;
-                playerHealth = 5;
+                
                 jumpImpulse = 10;
+                animator.SetTrigger("Swap");
                 break;
             case PlayerState.Form3:
                 newPlayerPrefab = form3Prefab; // Big
                 movementSpeed = 3;
-                playerHealth = 10;
+                
                 jumpImpulse = 0;
+                animator.SetTrigger("Swap");
                 break;
         }
 
@@ -179,17 +190,17 @@ public class PlayerManager : MonoBehaviour
     void OnSmall() {
         currentState = PlayerState.Form1;
         UpdateFormProperties();
-        animator.SetTrigger("Swap");
+        
     }
     void OnMedium() {
         currentState = PlayerState.Form2;
         UpdateFormProperties();
-        animator.SetTrigger("Swap");
+        
     }
     void OnBig() {
         currentState = PlayerState.Form3;
         UpdateFormProperties();
-        animator.SetTrigger("Swap");
+        
     }
 
     void OnJump() {

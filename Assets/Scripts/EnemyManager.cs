@@ -46,6 +46,7 @@ public class EnemyManager : MonoBehaviour
     IEnumerator DestroyGameObject(int delayTime){
 
         yield return new WaitForSeconds(delayTime);
+        Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }
