@@ -49,7 +49,8 @@ public class PlayerManager : MonoBehaviour
     void GetComponentsFromCurrentPlayer()
     {
         rb = currentPlayer.GetComponent<Rigidbody2D>();
-        animator = gameObject.GetComponent<Animator>();
+        // animator lives on the player prefab itself, not on the manager object
+        animator = currentPlayer.GetComponent<Animator>();
         spriteRenderer = currentPlayer.GetComponent<SpriteRenderer>();
         groundCheck = currentPlayer.GetComponent<GroundCheck>();
     }
@@ -57,8 +58,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        animator = gameObject.GetComponent<Animator>();
+        // animator reference should already point at currentPlayer; no need to re-fetch every frame
         if (playerHealth <= 0 && !isDead)
         {
            Debug.Log("Death triggered");
@@ -71,7 +71,13 @@ public class PlayerManager : MonoBehaviour
 
         if (movementDirection != Vector2.zero)
         {
-            animator.SetBool("Walking", true);
+            if (animator.GetBool("Walking") == false)
+            {
+                // Enable the Run Animation
+                animator.SetBool("Walking", true);
+                
+
+            }
 
 
             if (movementDirection.x < 0) { spriteRenderer.flipX = true; }
@@ -80,9 +86,10 @@ public class PlayerManager : MonoBehaviour
             }
         }
         // If the player is not moving - they're standing still
-        else {
-            // Disable the Walking Animation
+           else {
+            // Disable the Run Animation
             animator.SetBool("Walking", false);
+            
         }
 
         if (groundCheck.isGrounded)
@@ -141,21 +148,18 @@ public class PlayerManager : MonoBehaviour
                 movementSpeed = 10;
                 
                 jumpImpulse = 16;
-                animator.SetTrigger("Swap");
                 break;
             case PlayerState.Form2:
                 newPlayerPrefab = form1Prefab; // Normal
                 movementSpeed = 6;
                 
                 jumpImpulse = 10;
-                animator.SetTrigger("Swap");
                 break;
             case PlayerState.Form3:
                 newPlayerPrefab = form3Prefab; // Big
                 movementSpeed = 3;
                 
                 jumpImpulse = 0;
-                animator.SetTrigger("Swap");
                 break;
         }
 
@@ -168,6 +172,8 @@ public class PlayerManager : MonoBehaviour
         currentPlayer = Instantiate(newPlayerPrefab, currentPos, Quaternion.identity).transform;
         GetComponentsFromCurrentPlayer();
         rb.velocity = currentVel; // Restore velocity
+        // fire swap trigger on new animator so the animation actually plays
+        animator.SetTrigger("Swap");
     }
 
     void FixedUpdate()
