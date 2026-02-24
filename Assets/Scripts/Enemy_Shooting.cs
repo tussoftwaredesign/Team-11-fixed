@@ -8,18 +8,21 @@ public class Enemy_Shooting : MonoBehaviour
     public Transform bulletPos;
 
     private float timer;
-    private GameObject player;
+    private GameObject big;
+    private GameObject mid;
+    private GameObject small;
+
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        big = GameObject.FindGameObjectWithTag("Big Guy");
+        mid = GameObject.FindGameObjectWithTag("Mid Guy");
+        small = GameObject.FindGameObjectWithTag("Small Guy");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-
         timer += Time.deltaTime;
 
         if(timer > 3)

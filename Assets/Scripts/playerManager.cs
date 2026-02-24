@@ -194,18 +194,28 @@ public class PlayerManager : MonoBehaviour
     }
 
     void OnSmall() {
-        currentState = PlayerState.Form1;
-        UpdateFormProperties();
+        if (currentState != PlayerState.Form1) {
+            currentState = PlayerState.Form1;
+            Instantiate(swapEffect, currentPlayer.transform.position, currentPlayer.transform.rotation);
+            UpdateFormProperties();  
+        }
         
     }
     void OnMedium() {
-        currentState = PlayerState.Form2;
-        UpdateFormProperties();
+        if (currentState != PlayerState.Form2) {
+            currentState = PlayerState.Form2;
+            Instantiate(swapEffect, currentPlayer.transform.position, currentPlayer.transform.rotation);
+            UpdateFormProperties();
+        }
+        
         
     }
     void OnBig() {
-        currentState = PlayerState.Form3;
-        UpdateFormProperties();
+        if (currentState != PlayerState.Form3) {
+            currentState = PlayerState.Form3;
+            Instantiate(swapEffect, currentPlayer.transform.position, currentPlayer.transform.rotation);
+            UpdateFormProperties();
+        }
         
     }
 

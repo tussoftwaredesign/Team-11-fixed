@@ -27,5 +27,9 @@ public class PlayerAttackRadius : MonoBehaviour
 
             itemHealth.Hit(hitAmount);
         }
+
+        if (collision.gameObject.tag == "Button") {
+
+        }
     }
 }
