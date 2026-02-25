@@ -67,7 +67,7 @@ public class EnemyAgroZone : MonoBehaviour
                 //Debug.Log(calculatedDirection + " --- " + calculatedDistance + " --- " + Mathf.Abs(calculatedDistance.x));
                 
                 // Move to the Players Position
-                enemyRigidBody.velocity = new Vector2(calculatedDirection.x * movementSpeed, enemyRigidBody.velocity.y);
+                enemyRigidBody.linearVelocity = new Vector2(calculatedDirection.x * movementSpeed, enemyRigidBody.linearVelocity.y);
 
 
 
@@ -75,13 +75,13 @@ public class EnemyAgroZone : MonoBehaviour
             // Stop moving if we're too close
             else
             {
-                enemyRigidBody.velocity = new Vector2(0, 0);
+                enemyRigidBody.linearVelocity = new Vector2(0, 0);
             }
         }
         // Stop moving
         else
         {
-            enemyRigidBody.velocity = new Vector2(0, 0);
+            enemyRigidBody.linearVelocity = new Vector2(0, 0);
         }
     }
 

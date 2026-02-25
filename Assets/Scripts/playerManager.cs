@@ -134,7 +134,7 @@ public class PlayerManager : MonoBehaviour
     {
         // Save current position and velocity
         Vector3 currentPos = currentPlayer.position;
-        Vector2 currentVel = rb.velocity;
+        Vector2 currentVel = rb.linearVelocity;
 
         // Destroy current player
         Destroy(currentPlayer.gameObject);
@@ -147,7 +147,7 @@ public class PlayerManager : MonoBehaviour
                 newPlayerPrefab = form2Prefab; // Small
                 movementSpeed = 10;
                 
-                jumpImpulse = 16;
+                jumpImpulse = 21;
                 break;
             case PlayerState.Form2:
                 newPlayerPrefab = form1Prefab; // Normal
@@ -171,7 +171,7 @@ public class PlayerManager : MonoBehaviour
 
         currentPlayer = Instantiate(newPlayerPrefab, currentPos, Quaternion.identity).transform;
         GetComponentsFromCurrentPlayer();
-        rb.velocity = currentVel; // Restore velocity
+        rb.linearVelocity = currentVel; // Restore velocity
         // fire swap trigger on new animator so the animation actually plays
         animator.SetTrigger("Swap");
     }
@@ -179,7 +179,7 @@ public class PlayerManager : MonoBehaviour
     void FixedUpdate()
     {
         // Move the Player on the X axis only
-        rb.velocity = new Vector2((movementDirection.x * movementSpeed), rb.velocity.y);
+        rb.linearVelocity = new Vector2((movementDirection.x * movementSpeed), rb.linearVelocity.y);
     }
 
     void OnMove(InputValue movementValue)
@@ -223,8 +223,8 @@ public class PlayerManager : MonoBehaviour
         // Trigger the Jump Animation
         if (groundCheck.isGrounded)
         {
-            Debug.Log("Player has Jumped!");
-            rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+           
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpImpulse);
         }
     }
         private IEnumerator ReloadScene()
@@ -237,7 +237,7 @@ public class PlayerManager : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.tag == "Collectable") {
-            Debug.Log("Collision ended with: " + collision.collider.name);
+            
         }
     }
 }

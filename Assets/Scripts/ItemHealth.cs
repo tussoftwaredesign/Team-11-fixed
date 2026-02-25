@@ -22,7 +22,7 @@ public class ItemHealth : MonoBehaviour
         if (health >= 0){
             health = health - hitAmount;
 
-            Debug.Log("Health is now: " + health);
+            
         }
 
     }

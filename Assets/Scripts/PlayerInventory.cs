@@ -30,14 +30,14 @@ public class PlayerInventory : MonoBehaviour
             
             Destroy(collectable);
 
-            Debug.Log("Shards: " + shards);
+            
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.tag == "Collectable") {
-            Debug.Log("Collision ended with: " + collision.collider.name);
+            
         }
     }
 }

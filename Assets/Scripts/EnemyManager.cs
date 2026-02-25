@@ -34,13 +34,12 @@ public class EnemyManager : MonoBehaviour
     }
      void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Collision detected with: " + other.gameObject.name + " | Tag: " + other.gameObject.tag);
+       
         
         if (other.gameObject.CompareTag("Big Guy"))
        {
             Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
-            Debug.Log("Squished Enemy!");
         }
     }
     IEnumerator DestroyGameObject(int delayTime){

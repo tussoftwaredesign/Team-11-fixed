@@ -107,7 +107,7 @@ public class playerControls : MonoBehaviour
     void FixedUpdate()
     {
         // Move the Player on the X axis only
-        rb.velocity = new Vector2((movementDirection.x * movementSpeed), rb.velocity.y);
+        rb.linearVelocity = new Vector2((movementDirection.x * movementSpeed), rb.linearVelocity.y);
     }
 
     void OnMove(InputValue movementValue)
@@ -126,7 +126,7 @@ public class playerControls : MonoBehaviour
         if (groundCheck.isGrounded)
         {
             Debug.Log("Player has Jumped!");
-            rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpImpulse);
             animator.SetTrigger("Jump");
         }
     }
