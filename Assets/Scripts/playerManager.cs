@@ -28,6 +28,10 @@ public class PlayerManager : MonoBehaviour
     private bool isDead = false;
     public PlayerState currentState = PlayerState.Form1;
     public GameObject swapEffect;
+    public AudioClip collectClip; // Assign collectable pickup sound in Inspector
+    public AudioClip jumpClip; // Assign jump sound in Inspector
+    public AudioClip punchClip; // Assign punch sound in Inspector
+    private AudioSource audioSource;
 
 
     // Start is called before the first frame update
@@ -44,6 +48,12 @@ public class PlayerManager : MonoBehaviour
         // Instantiate the initial form (Form1 - Small)
         currentPlayer = Instantiate(form2Prefab, transform.position, transform.rotation).transform;
         GetComponentsFromCurrentPlayer();
+        audioSource = gameObject.GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+        }
     }
 
     void GetComponentsFromCurrentPlayer()
@@ -125,6 +135,12 @@ public class PlayerManager : MonoBehaviour
 
             playerHealth += collectableValue;
             
+            // play pickup sound if assigned
+            if (audioSource != null && collectClip != null)
+            {
+                audioSource.PlayOneShot(collectClip);
+            }
+
             Destroy(collectable);
 
             Debug.Log("Health: " + playerHealth);
@@ -191,6 +207,11 @@ public class PlayerManager : MonoBehaviour
     void OnFire() {
         // Trigger the Attack Animation
         animator.SetTrigger("Attack");
+        // play punch sound if assigned
+        if (audioSource != null && punchClip != null)
+        {
+            audioSource.PlayOneShot(punchClip);
+        }
     }
 
     void OnSmall() {
@@ -225,6 +246,11 @@ public class PlayerManager : MonoBehaviour
         {
            
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpImpulse);
+            // play jump sound if assigned
+            if (audioSource != null && jumpClip != null)
+            {
+                audioSource.PlayOneShot(jumpClip);
+            }
         }
     }
         private IEnumerator ReloadScene()

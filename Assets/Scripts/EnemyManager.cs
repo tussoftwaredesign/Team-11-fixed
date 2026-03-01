@@ -7,6 +7,9 @@ public class EnemyManager : MonoBehaviour
 
     Animator animator;
     ItemHealth itemHealth;
+    public AudioSource flying;
+    public AudioClip flyingClip; // assign looped flying sound in Inspector
+    public AudioClip deathClip; // assign death sound in Inspector
 
     bool deathTriggered = false;
     public int destroyTimer = 1;
@@ -16,6 +19,25 @@ public class EnemyManager : MonoBehaviour
     {
         animator = gameObject.GetComponent<Animator>();
         itemHealth = gameObject.GetComponent<ItemHealth>();
+        flying = gameObject.GetComponent<AudioSource>();
+        if (flying == null)
+        {
+            flying = gameObject.AddComponent<AudioSource>();
+            flying.playOnAwake = false;
+        }
+
+        if (flying != null && flyingClip != null)
+        {
+            flying.clip = flyingClip;
+            flying.loop = true;
+            flying.Play();
+        }
+        flying = gameObject.GetComponent<AudioSource>();
+        if (flying == null)
+        {
+            flying = gameObject.AddComponent<AudioSource>();
+            flying.playOnAwake = false;
+        }
         
     }
 
@@ -25,6 +47,13 @@ public class EnemyManager : MonoBehaviour
     {
         
         if (itemHealth.health <= 0 && !deathTriggered){
+            // stop flying loop and play death sound
+            if (flying != null)
+            {
+                if (flying.isPlaying) flying.Stop();
+                if (deathClip != null) flying.PlayOneShot(deathClip);
+            }
+
             animator.SetTrigger("enemy_death");
 
             deathTriggered = true;

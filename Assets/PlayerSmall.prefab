@@ -363,6 +363,9 @@ MonoBehaviour:
   playerMaxHealth: 0
   currentState: 0
   swapEffect: {fileID: 7757074198341069770, guid: 3acc9dc33010b8544a2eb0462e49e5c9, type: 3}
+  collectClip: {fileID: 8300000, guid: 838d061c0f000014193ba12698e49ea1, type: 3}
+  jumpClip: {fileID: 8300000, guid: 5198152c70883804b90c41adf82c3438, type: 3}
+  punchClip: {fileID: 8300000, guid: a44f1eff7d5a23e488bbf111f0a8e23e, type: 3}
 --- !u!70 &6595111166127775488
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
