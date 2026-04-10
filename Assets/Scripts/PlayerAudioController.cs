@@ -9,6 +9,7 @@ public class PlayerAudioController : MonoBehaviour
     public AudioSource JumpingAudio;
     public AudioSource DeathAudio;
     public AudioSource SwapAudio;
+    public AudioSource PickupAudio;
     // Start is called before the first frame update
 
     public void PlayAttackingAudio()
@@ -51,7 +52,8 @@ public class PlayerAudioController : MonoBehaviour
             Debug.Log("DeathAudio is null or has no clip");
         }
     }
-        public void PlaySwapAudio()
+
+    public void PlaySwapAudio()
     {
         Debug.Log("PlaySwapAudio called");
         if (SwapAudio != null && SwapAudio.clip != null)
@@ -65,6 +67,19 @@ public class PlayerAudioController : MonoBehaviour
         }
     }
 
+    public void PlayPickupAudio()
+    {
+        Debug.Log("PlayPickupAudio called");
+        if (PickupAudio != null && PickupAudio.clip != null)
+        {
+            PickupAudio.Play();
+            Debug.Log("PickupAudio played");
+        }
+        else
+        {
+            Debug.Log("PickupAudio is null or has no clip");
+        }
+    }
 
     public void PlayerWalkingAudio(bool Walking)
     {
@@ -86,6 +101,7 @@ public class PlayerAudioController : MonoBehaviour
             WalkingAudio.Stop();
             Debug.Log("WalkingAudio stopped");
         }
+       
     }
     void Start()
     {

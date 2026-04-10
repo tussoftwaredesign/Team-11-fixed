@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour
     public int movementSpeed = 5;
     public int jumpImpulse = 5;
     public float timer = 2.0f;
-    public float playerHealth = 12;
+    public float playerHealth = 3;
     public float playerMaxHealth;
     public PlayerAudioController playerAudio;
     private bool isDead = false;
@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerHealth = 10;
+        playerHealth = 3;
         playerMaxHealth = playerHealth;
 
         playerAudio = GetComponentInChildren<PlayerAudioController>();
@@ -127,6 +127,7 @@ public class PlayerManager : MonoBehaviour
             playerHealth -= 1;
             Debug.Log("PlayerHealth" + playerHealth);
             animator.SetTrigger("Swap");
+
         }
         if (other.gameObject.tag == "Collectable") {
 
@@ -136,10 +137,11 @@ public class PlayerManager : MonoBehaviour
             int collectableValue = collectable.GetComponent<itemValue>().pickUpValue;
 
             playerHealth += collectableValue;
-            
+            playerAudio.PlayPickupAudio();
             Destroy(collectable);
 
             Debug.Log("Health: " + playerHealth);
+            playerAudio.PlayPickupAudio();
         }
     }
     void UpdateFormProperties()
@@ -248,8 +250,10 @@ public class PlayerManager : MonoBehaviour
         private IEnumerator ReloadScene()
     {
         Debug.Log("Reloading scene");
+        playerAudio.PlayDeathAudio();
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
     }
 
     private void OnCollisionExit2D(Collision2D collision)
