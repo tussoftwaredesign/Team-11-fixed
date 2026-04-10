@@ -33,7 +33,7 @@ public class EnemyBulletScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collision detected with: " + other.gameObject.name + " | Tag: " + other.gameObject.tag);
+        
         
         if (other.gameObject.CompareTag("Big Guy"))
         {

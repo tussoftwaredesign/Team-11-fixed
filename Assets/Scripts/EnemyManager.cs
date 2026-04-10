@@ -11,11 +11,14 @@ public class EnemyManager : MonoBehaviour
     bool deathTriggered = false;
     public int destroyTimer = 1;
     public GameObject explosionEffect;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        
         animator = gameObject.GetComponent<Animator>();
         itemHealth = gameObject.GetComponent<ItemHealth>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         
     }
 
@@ -34,19 +37,23 @@ public class EnemyManager : MonoBehaviour
     }
      void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Collision detected with: " + other.gameObject.name + " | Tag: " + other.gameObject.tag);
+        
         
         if (other.gameObject.CompareTag("Big Guy"))
        {
             Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
-            Debug.Log("Squished Enemy!");
+            
         }
     }
     IEnumerator DestroyGameObject(int delayTime){
 
         yield return new WaitForSeconds(delayTime);
-        Instantiate(explosionEffect, transform.position, transform.rotation);
+        Instantiate(explosionEffect, transform.position, transform.rotation);    
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
         Destroy(gameObject);
     }
 }

@@ -35,7 +35,7 @@ public class EnemyAgroZone : MonoBehaviour
         {
             if (Mathf.Abs(calculatedDistance.x) >= 2.5)
             {
-                enemyAnimator.SetBool("Walking", true);
+                //enemyAnimator.SetBool("Walking", true);
             }
             if (calculatedDirection.x < 0)
             {
@@ -46,7 +46,7 @@ public class EnemyAgroZone : MonoBehaviour
             }
         }
         else {
-            enemyAnimator.SetBool("Walking", false);
+            //enemyAnimator.SetBool("Walking", false);
         } 
 
 

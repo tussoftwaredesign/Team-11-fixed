@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour
     public float timer = 2.0f;
     public float playerHealth = 12;
     public float playerMaxHealth;
+    public PlayerAudioController playerAudio;
     private bool isDead = false;
     public PlayerState currentState = PlayerState.Form1;
     public GameObject swapEffect;
@@ -36,13 +37,23 @@ public class PlayerManager : MonoBehaviour
         playerHealth = 10;
         playerMaxHealth = playerHealth;
 
+        playerAudio = GetComponentInChildren<PlayerAudioController>();
+        if (playerAudio == null)
+        {
+            Debug.LogError("PlayerAudioController not found on PlayerManager!");
+        }
+        else
+        {
+            Debug.Log("PlayerAudioController assigned successfully");
+        }
+
         if (form2Prefab == null)
         {
             Debug.LogError("form2Prefab not assigned in Inspector!");
             return;
         }
         // Instantiate the initial form (Form1 - Small)
-        currentPlayer = Instantiate(form2Prefab, transform.position, transform.rotation).transform;
+        currentPlayer = Instantiate(form1Prefab, transform.position, transform.rotation).transform;
         GetComponentsFromCurrentPlayer();
     }
 
@@ -75,7 +86,7 @@ public class PlayerManager : MonoBehaviour
             {
                 // Enable the Run Animation
                 animator.SetBool("Walking", true);
-                
+                playerAudio.PlayerWalkingAudio(true);
 
             }
 
@@ -89,6 +100,7 @@ public class PlayerManager : MonoBehaviour
            else {
             // Disable the Run Animation
             animator.SetBool("Walking", false);
+            playerAudio.PlayerWalkingAudio(false);
             
         }
 
@@ -151,9 +163,9 @@ public class PlayerManager : MonoBehaviour
                 break;
             case PlayerState.Form2:
                 newPlayerPrefab = form1Prefab; // Normal
-                movementSpeed = 6;
+                movementSpeed = 8;
                 
-                jumpImpulse = 10;
+                jumpImpulse = 13;
                 break;
             case PlayerState.Form3:
                 newPlayerPrefab = form3Prefab; // Big
@@ -174,6 +186,7 @@ public class PlayerManager : MonoBehaviour
         rb.velocity = currentVel; // Restore velocity
         // fire swap trigger on new animator so the animation actually plays
         animator.SetTrigger("Swap");
+        playerAudio.PlaySwapAudio();
     }
 
     void FixedUpdate()
@@ -191,13 +204,15 @@ public class PlayerManager : MonoBehaviour
     void OnFire() {
         // Trigger the Attack Animation
         animator.SetTrigger("Attack");
+        playerAudio.PlayAttackingAudio();
     }
 
     void OnSmall() {
         if (currentState != PlayerState.Form1) {
             currentState = PlayerState.Form1;
             Instantiate(swapEffect, currentPlayer.transform.position, currentPlayer.transform.rotation);
-            UpdateFormProperties();  
+            UpdateFormProperties();
+            playerAudio.PlaySwapAudio();
         }
         
     }
@@ -206,6 +221,7 @@ public class PlayerManager : MonoBehaviour
             currentState = PlayerState.Form2;
             Instantiate(swapEffect, currentPlayer.transform.position, currentPlayer.transform.rotation);
             UpdateFormProperties();
+            playerAudio.PlaySwapAudio();
         }
         
         
@@ -215,6 +231,7 @@ public class PlayerManager : MonoBehaviour
             currentState = PlayerState.Form3;
             Instantiate(swapEffect, currentPlayer.transform.position, currentPlayer.transform.rotation);
             UpdateFormProperties();
+            playerAudio.PlaySwapAudio();
         }
         
     }
@@ -225,6 +242,7 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Player has Jumped!");
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+            playerAudio.PlayJumpingAudio();
         }
     }
         private IEnumerator ReloadScene()
